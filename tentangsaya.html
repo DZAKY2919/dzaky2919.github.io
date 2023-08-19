@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TENTANG</title>
+    <link rel="stylesheet" href="tentang.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Warna background putih */
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Menaruh navigasi di pojok kanan */
+    align-items: center;
+    height: 50px;
+    background-color: #1b1b1b; /* Warna latar belakang navigasi */
+    color: white; /* Warna teks navigasi */
+    padding: 13px; /* Padding kiri dan kanan untuk mengatur jarak antar elemen navigasi */
+}
+
+/* Mengubah warna teks tautan navigasi */
+.navbar a {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none; /* Menghapus dekorasi tautan */
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff; /* Warna teks menjadi putih */
+    margin-left: 110px; /* Mengatur jarak antar tautan navigasi */
+}
+.active{
+    background-color: crimson;
+    color: #fff;
+    padding: 4px;
+}
+.container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        text-align: center; /* Teks menjadi ditengah secara horizontal */
+    }
+
+    .tentang {
+        font-family: 'Poppins', sans-serif; /* Contoh penggunaan font dari Google Fonts */
+        color: black;
+        font-size: 20px;
+        font-weight: bolder;
+        cursor: pointer;
+        text-align: center; /* Teks menjadi ditengah secara horizontal */
+    }
+    </style>
+    <nav class="navbar">
+        <a href="index.html">BERANDA</a>
+        <a href="tentangsaya.html" class="active">Tentang Saya</a>
+    </nav>
+
+    <div class="container">
+        <h1 class="tentang" onclick="animateText()">Nama FAWWAZ DZAKY A. KELAS 8SMP
+             Saya membuat website ini untuk mengasah skill coding saya , setelah saya sudah menyelesaikan website ini 50%
+            saya sanggat banyak sekali mendapatkan ilmu ilmu seputar coding , Website ini akan terus saya update
+         , dan saya akan menambahkan lebih banyak fitur lagi , selamat menikmati website saya , Asslamualaikum
+        SAMPAI JUMPAA</h1>
+    </div>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" onkeypress="jump()">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Your+Font+Name&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>KYY2919</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: contents;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+#box {
+width: 900px;
+height: 200px;
+position: relative;
+}
+
+#box #roadkonten{
+z-index: -1;
+width: 0;
+height: 0;
+position: absolute;
+bottom: 1px;
+}
+#box #roadkonten img{
+height: 600px;
+width: 2000px;
+position: absolute;
+left: 0;
+top: -200px;
+animation:road 0.3s linear infinite;
+}
+#dino{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 280px;
+    left: 130px;
+}
+#cactus{
+width: 300px;
+height: 300px;
+position: absolute;
+top: 290px;
+left: 2100px;
+}
+ @keyframes road {
+    0% {
+        left: 0px;
+    }
+    100% {
+        left: -190px;
+ }
+}
+.animate {
+    animation: jump 500ms infinite linear;
+}
+
+@keyframes jump {
+0% {
+    top: 280px;
+}
+30% {
+top:  10px;
+}
+70% {
+    top: 90px;
+}
+    85% {
+        top: 150px;
+}
+100% {
+    top: 280px;
+}
+}
+#sco {
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+.notification-box {
+    position: fixed;
+    top: 290px;
+    left: 0px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 13px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.notification-content {
+    padding: 15px;
+    color: #333;
+}
+
+.notification-content button {
+    background-color: #df2323;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.notification-content button:hover {
+    background-color: #d34949;
+}
+.navbar {
+    display: flex;
+    justify-content: center; /* Menaruh navigasi di pojok kanan */
+    align-items: center;
+    height: 45px;
+	width: 1800px;
+    background-color: #1b1b1b; /* Warna latar belakang navigasi */
+    color: white; /* Warna teks navigasi */
+    padding: 14px; /* Padding kiri dan kanan untuk mengatur jarak antar elemen navigasi */
+}
+
+/* Mengubah warna teks tautan navigasi */
+.navbar a {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none; /* Menghapus dekorasi tautan */
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff; /* Warna teks menjadi putih */
+    margin-left: 150px; /* Mengatur jarak antar tautan navigasi */
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Membuat konten berada di tengah vertikal */
+}
+        #sco {
+            z-index: -1;
+            position: absolute;
+            top: 130%;
+            left: 3%;
+            width: 20%;
+            height: 20%;
+            font-weight: bold; /* Mengatur ketebalan font */
+            font-family: Arial, sans-serif; /* Mengatur jenis font */
+        }
+        #rot {
+    width: 136px;
+    height: 73px;
+    position: absolute; /* Mengatur posisi absolut */
+    top: 5px; /* Atur posisi vertikal jika diperlukan */
+    right: 740px; /* Menggeser elemen ke samping kanan */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html">BERANDA</a>
+        <a href="tentangsaya.html">TENTANG SAYA</a>
+    </nav>
+    <div class="box" id="box">
+        <audio id="jumpSound" src="ting.mp3"></audio>
+        <div class="class" id="sco"> Score = 0 </div>
+        <img src="cactus.png" id="cactus" alt="">
+        <img src="dino.png" id="dino" alt="">
+        <img src="rotade.png" id="rot" alt="">
+        <div class="roadkonten" id="roadkonten">
+            <img src="road.png" id="roadkonten" alt="">
+
+            <div id="notificationBox" class="notification-box">
+                <div class="notification-content">
+                    <p>KAMU TELAH MATI , APAKAH INGIN MAIN LAGI?</p>
+                    <button id="restartButton">MAIN LAGI</button>
+                </div>
+            </div>
+            
+    </div>
+    <script>
+			document.body.addEventListener("touchstart", jump);
+document.body.addEventListener("click", jump);
+       const char = document.getElementById("dino");
+        const cactus = document.getElementById("cactus");
+        const playerScore = document.getElementById("sco");
+        let score = 0; // Variabel untuk menyimpan skor
+let interval = null; // Variabel untuk menyimpan interval perhitungan skor
+
+        let jumlahscore = () => {
+            score++;
+            playerScore.innerHTML = `Score: ${score}`;
+        };
+        let hasJumped = false; // Tambahkan variabel untuk melacak apakah pemain sudah melompat
+
+        function jump() {
+    if (!char.classList.contains("animate")) {
+        char.classList.add("animate");
+        hasJumped = true; // Tandai bahwa pemain telah melompat
+
+        const jumpSound = document.getElementById("jumpSound");
+        jumpSound.currentTime = 0; // Rewind the sound to the beginning
+        jumpSound.play();
+
+        setTimeout(function () {
+            char.classList.remove("animate");
+        }, 500);
+
+        interval = setInterval(jumlahscore, 180); // Memulai interval perhitungan skor
+    }
+}
+
+
+function ifHitCactus() {
+    const chartop = parseInt(window.getComputedStyle(char).getPropertyValue("top"));
+    const cactusleft = parseInt(window.getComputedStyle(cactus).getPropertyValue("left"));
+
+    if (cactusleft < 120 && cactusleft > 0 && chartop >= 190) {
+        if (hasJumped) {
+            clearInterval(interval);
+            cactus.style.animation = "none";
+            cactus.style.display = "none";
+            const notificationBox = document.getElementById("notificationBox");
+            const restartButton = document.getElementById("restartButton");
+
+            notificationBox.style.display = "block"; // Tampilkan notifikasi yang lebih keren
+
+            restartButton.addEventListener("click", function() {
+                window.location.reload();
+            });
+        } else {
+            // Pemain belum melompat, abaikan tabrakan dengan kaktus
+        }
+    }
+}
+setInterval(ifHitCactus, 10);
+let cactusPosition = 2100; // Awal posisi cactus
+let cactusSpeed = 2.5; // Kecepatan cactus
+let cactusSpeedIncrement = 0.5; // Kenaikan kecepatan cactus
+let cactusInterval = null; // Interval untuk menggerakkan cactus
+
+function moveCactus() {
+    const cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue("left"));
+
+    if (cactusPosition > -230) {
+        cactusPosition -= cactusSpeed;
+        cactus.style.left = cactusPosition + "px";
+        cactusSpeed += cactusSpeedIncrement;
+    } else {
+        // Reset cactus position and increase speed
+        cactusPosition = 2100;
+        cactus.style.left = cactusPosition + "px";
+        cactusSpeed = 2.5;
+    }
+}
+
+cactusInterval = setInterval(moveCactus, 13);
+</script>
+</body>
+</html>
